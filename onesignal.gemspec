@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Ruby wrapper to OneSignal API'
   spec.description   = 'Ruby wrapper to OneSignal API, mapping to Plain Old Ruby Objects'
-  spec.homepage      = 'https://github.com/mikamai/onesignal-ruby'
+  spec.homepage      = 'https://github.com/rafayet-monon/onesignal'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
