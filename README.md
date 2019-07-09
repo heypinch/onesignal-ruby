@@ -62,44 +62,42 @@ contents = OneSignal::Notification::Contents.new(en: "I'm a notification!", it: 
 # Select the included (and/or excluded) segments to target
 included_segments = [OneSignal::Segment::ACTIVE_USERS, 'My custom segment']
 
-# Create the Notification object
-notification = OneSignal::Notification.new(headings: headings, contents: contents, included_segments: included_segments)
-```
+# Images for appearance
+images = OneSignal::Appearances::Images.new(
+                   background:       {"image": "https://domain.com/background_image.jpg", "headings_color": "FFFF0000", "contents_color": "FF00FF00"},
+                   small_icon:       'https://via.placeholder.com/192x192',
+                   large_icon:       'https://via.placeholder.com/360x180',
+                   adm_small_icon:   'https://via.placeholder.com/192x192',
+                   adm_large_icon:   'https://via.placeholder.com/360x180',
+                   chrome_web_icon:  'https://via.placeholder.com/360x180',
+                   chrome_web_image: 'https://via.placeholder.com/192x192',
+                   chrome_web_badge: 'https://via.placeholder.com/360x180',
+                   chrome_icon:      'https://via.placeholder.com/192x192',
+                   firefox_icon:     'https://via.placeholder.com/360x180'
+               )
+# Add Sounds
+sounds = OneSignal::Appearances::Sounds.new(ios: 'ping.wav', android: 'ping')
 
-Then send it.
-```ruby
- response = OneSignal.send_notification(notification)
- # => #<OneSignal::Responses::Notification> the created notification
-```
-
-### Fetch a notification
-You can fetch an existing notification given its ID.
-```ruby
-response = OneSignal.fetch_notification(notification_id)
-# => #<OneSignal::Responses::Notification> the created notification
-```
-`OneSignal::Responses::Notification` has the following fields.
-```ruby
-id            # Notification UUID
-successful    # Number of successful deliveries
-failed        # Number of failed deliveries
-converted     # Number of users who have clicked / tapped on your notification.
-remaining     # Number of notifications that have not been sent out yet
-queued_at     # Unix timestamp of enqueuing time
-send_after    # Unix timestamp indicating when notification delivery should begin
-completed_at  # Unix timestamp indicating when notification delivery completed.
-url           # URL associated with the notification
-data          # Custom metadata
-canceled      # Boolean, has the notification been canceled
-headings      # Map of locales to title strings
-contents      # Map of locales to content strings
-
-response.id # => fe82c1ae-54c2-458b-8aad-7edc3e8a96c4
-```
-
-### Attachments
-You can add files, data or images to a notification, or an external URL to open.
-```ruby
+# Also there are some additional fields inn appearance
+additionals = OneSignal::Appearances::Additionals.new(
+                   android_channel_id:           '',
+                   existing_android_channel_id:  '',
+                   android_led_color:            'FF0000FF',
+                   android_accent_color:         'FFFF0000',
+                   android_visibility:            1,
+                   ios_badgeType:                'Increase',
+                   ios_badgeCount:               'Increase',
+                   collapse_id:                  '',
+                   apns_alert:                   ''
+               )
+ 
+# Add buttons
+buttons = OneSignal::Buttons.new(
+                    buttons:      [{"id": "id1", "text": "button1", "icon": "ic_menu_share"}, {"id": "id2", "text": "button2", "icon": "ic_menu_send"}],
+                    web_buttons:  [{"id": "like-button", "text": "Like", "icon": "http://i.imgur.com/N8SN8ZS.png", "url": "https://github.com/rafayet-monon/onesignal"}, {"id": "read-more-button", "text": "Read more", "icon": "http://i.imgur.com/MIxJp1L.png", "url": "https://github.com/rafayet-monon/onesignal"}]
+                )
+                
+# Add attachments
 attachments = OneSignal::Attachments.new(
       data:            { 'test' => 'test' },
       url:             'http://example.com',
@@ -109,21 +107,15 @@ attachments = OneSignal::Attachments.new(
       chrome_picture:  'drawable resource name or URL.'
 )
 
-OneSignal::Notification.new(attachments: attachments)
+# Create the Notification object
+notification = OneSignal::Notification.new(headings: headings, contents: contents, included_segments: segments, attachments: attachments, appearance_images: images, buttons: buttons, appearance_sounds: sounds, appearance_additionals: additionals)
+ 
 ```
 
-### Fetch players
-You can fetch all players and devices with a simple method.
-
+Then send it.
 ```ruby
-players = OneSignal.fetch_players
-# => Array of OneSignal::Responses::Player
-```
-
-Or you can fetch a single player by its ID.
-```ruby
-player = OneSignal.fetch_player(player_id)
-# => #<OneSignal::Responses::Player>
+ response = OneSignal.send_notification(notification)
+ # => #<OneSignal::Responses::Notification> the created notification
 ```
 
 ### Filters
@@ -152,6 +144,55 @@ Becomes
 ]
 ```
 
+### Specific Targets
+If you want to send a notification only to specific targets (a particular user's email or device) you can
+pass a `OneSignal::IncludedTargets` to the notification object.
+See [the official documentation](https://documentation.onesignal.com/reference#section-send-to-specific-devices) for a list of available params.
+```ruby
+included_targets = OneSignal::IncludedTargets.new(include_player_ids: 'test-id-12345')
+OneSignal::Notification.new(included_targets: included_targets)
+```
+
+
+### Fetch a notification
+You can fetch an existing notification given its ID.
+```ruby
+response = OneSignal.fetch_notification(notification_id)
+# => #<OneSignal::Responses::Notification> the created notification
+```
+`OneSignal::Responses::Notification` has the following fields.
+```ruby
+id            # Notification UUID
+successful    # Number of successful deliveries
+failed        # Number of failed deliveries
+converted     # Number of users who have clicked / tapped on your notification.
+remaining     # Number of notifications that have not been sent out yet
+queued_at     # Unix timestamp of enqueuing time
+send_after    # Unix timestamp indicating when notification delivery should begin
+completed_at  # Unix timestamp indicating when notification delivery completed.
+url           # URL associated with the notification
+data          # Custom metadata
+canceled      # Boolean, has the notification been canceled
+headings      # Map of locales to title strings
+contents      # Map of locales to content strings
+
+response.id # => fe82c1ae-54c2-458b-8aad-7edc3e8a96c4
+```
+
+### Fetch players
+You can fetch all players and devices with a simple method.
+
+```ruby
+players = OneSignal.fetch_players
+# => Array of OneSignal::Responses::Player
+```
+
+Or you can fetch a single player by its ID.
+```ruby
+player = OneSignal.fetch_player(player_id)
+# => #<OneSignal::Responses::Player>
+```
+
 The operator methods (`#lesser_than`, `#greater_than`, `#equals`, `#not_equals`) are also available through the following shorthands: `<`, `>`, `=`, `!=`.
 
 **Example**
@@ -163,22 +204,6 @@ filters = [
 ]
 
 OneSignal::Notification.new(filters: filters)
-```
-
-### Custom Sounds
-You can customize notification sounds by passing a `OneSignal::Sounds` object.
-```ruby
-sounds = OneSignal::Sounds.new(ios: 'ping.wav', android: 'ping')
-OneSignal::Notification.new(sounds: sounds)
-```
-
-### Specific Targets
-If you want to send a notification only to specific targets (a particular user's email or device) you can
-pass a `OneSignal::IncludedTargets` to the notification object.
-See [the official documentation](https://documentation.onesignal.com/reference#section-send-to-specific-devices) for a list of available params.
-```ruby
-included_targets = OneSignal::IncludedTargets.new(include_player_ids: 'test-id-12345')
-OneSignal::Notification.new(included_targets: included_targets)
 ```
 
 **WARNING**

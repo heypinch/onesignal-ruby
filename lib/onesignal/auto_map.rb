@@ -3,10 +3,10 @@
 module OneSignal
   module AutoMap
     def create_readers **attributes
-      attributes.keys.each do |k|
-        self.class.define_method k do
-          attributes[k]
-        end
+      attributes.map do |attribute, value|
+        instance_variable_set :"@#{attribute}", value
+
+        self.singleton_class.class_eval { attr_reader attribute }
       end
     end
   end

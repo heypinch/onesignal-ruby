@@ -6,6 +6,8 @@ module OneSignal
     ACTIVE_USERS = 'Active Users'
     ENGAGED_USERS = 'Engaged Users'
     INACTIVE_USERS = 'Inactive Users'
+    TEST_USERS = 'Test Users'
+    SUBSCRIBED_USERS = 'Subscribed Users'
 
     def initialize name:
       @name = name

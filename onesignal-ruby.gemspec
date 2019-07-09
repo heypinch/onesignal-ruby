@@ -5,10 +5,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'onesignal/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'onesignal-ruby'
+  spec.name          = 'onesignal'
   spec.version       = OneSignal::VERSION
-  spec.authors       = ['Matteo Joliveau']
-  spec.email         = ['matteo.joliveau@mikamai.com']
+  spec.authors       = ['Rafayet Monon']
+  spec.email         = ['rafayet.monon@gmail.com']
 
   spec.summary       = 'Ruby wrapper to OneSignal API'
   spec.description   = 'Ruby wrapper to OneSignal API, mapping to Plain Old Ruby Objects'
@@ -17,12 +17,12 @@ Gem::Specification.new do |spec|
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = 'https://rubygems.org'
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
-  end
+  # if spec.respond_to?(:metadata)
+  #   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
+  # else
+  #   raise 'RubyGems 2.0 or newer is required to protect against ' \
+  #     'public gem pushes.'
+  # end
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

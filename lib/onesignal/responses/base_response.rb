@@ -6,7 +6,7 @@ module OneSignal
       def initialize attributes = {}
         @attributes = attributes.deep_symbolize_keys
                                 .keep_if { |k, _v| self.class::ATTRIBUTES_WHITELIST.include?(k.to_sym) }
-        self.class.attr_reader(*self.class::ATTRIBUTES_WHITELIST)
+        self.class.mattr_reader(*self.class::ATTRIBUTES_WHITELIST)
       end
     end
   end
