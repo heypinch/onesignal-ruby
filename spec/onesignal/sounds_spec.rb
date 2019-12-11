@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe OneSignal::Sounds do
+describe OneSignal::Appearances::Sounds do
   let(:params) do
     {
       ios:     'test.wav',
@@ -15,12 +15,12 @@ describe OneSignal::Sounds do
   subject { build :sounds }
 
   it 'creates an attachment' do
-    expect(described_class.new(params)).to be_instance_of OneSignal::Sounds
+    expect(described_class.new(params)).to be_instance_of OneSignal::Appearances::Sounds
   end
 
   it 'refuses an invalid filename' do
-    expect { described_class.new(ios: 'test') }.to raise_error OneSignal::Sounds::InvalidError
-    expect { described_class.new(windows: 'test') }.to raise_error OneSignal::Sounds::InvalidError
+    expect { described_class.new(ios: 'test') }.to raise_error OneSignal::Appearances::InvalidError
+    expect { described_class.new(windows: 'test') }.to raise_error OneSignal::Appearances::InvalidError
   end
 
   it 'serializes as json' do

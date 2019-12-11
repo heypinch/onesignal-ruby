@@ -31,7 +31,7 @@ module OneSignal
 
     def as_json options = {}
       super(options)
-        .except('attachments', 'sounds', 'included_targets', 'images')
+        .except('attachments', 'appearance_sounds', 'included_targets', 'appearance_images', 'appearance_additionals', 'buttons')
         .merge(@attachments&.as_json(options) || {})
         .merge(@appearance_sounds&.as_json(options) || {})
         .merge(@included_targets&.as_json(options) || {})
