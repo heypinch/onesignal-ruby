@@ -35,7 +35,7 @@ describe Notification do
             excluded_segments: segments,
             send_after: time,
             filters: filters,
-            sounds: sounds,
+            appearance_sounds: sounds,
             included_targets: targets
     end
 
