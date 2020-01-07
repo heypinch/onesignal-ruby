@@ -27,6 +27,13 @@ module OneSignal
       Responses::Notification.from_json fetched.body
     end
 
+    def create_player player
+      return unless OneSignal.config.active
+
+      created = Commands::CreatePlayer.call player
+      fetch_player(JSON.parse(created.body)['id'])
+    end
+
     def fetch_player player_id
       return unless OneSignal.config.active
 
