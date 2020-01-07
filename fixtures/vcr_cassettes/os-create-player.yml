@@ -1,0 +1,143 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://onesignal.com/api/v1/players
+    body:
+      encoding: UTF-8
+      string: '{"device_type":1,"app_id":"22bc6dec-5150-4d6d-8628-377259d2dd14"}'
+    headers:
+      User-Agent:
+      - Faraday v0.17.3
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic test
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 07 Jan 2020 00:41:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d41964af3031c18bb0733b53d1ccdc0771578357663; expires=Thu, 06-Feb-20
+        00:41:03 GMT; path=/; domain=.onesignal.com; HttpOnly; SameSite=Lax
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 32b23909-c7fc-477a-9ea1-1e72359c586b
+      Access-Control-Allow-Headers:
+      - SDK-Version
+      Etag:
+      - W/"99c167edb3f876827c2269cdbd142121"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.053839'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.3.7
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5511e2453a85da4a-SYD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"success":true,"id":"386ad9c3-2af7-40ce-a50c-5cd70f7a2d34"}'
+    http_version: 
+  recorded_at: Tue, 07 Jan 2020 00:41:03 GMT
+- request:
+    method: get
+    uri: https://onesignal.com/api/v1/players/386ad9c3-2af7-40ce-a50c-5cd70f7a2d34?app_id
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.3
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic test
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 07 Jan 2020 00:41:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=df6b2cb6488bb7ca560c4a0e3e3c3f84e1578357664; expires=Thu, 06-Feb-20
+        00:41:04 GMT; path=/; domain=.onesignal.com; HttpOnly; SameSite=Lax
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 31d43864-c893-40e2-89c6-3cb8edaeb34a
+      Access-Control-Allow-Headers:
+      - SDK-Version
+      Etag:
+      - W/"8a4c44700d1226dda0d1633531a4a4a3"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.008684'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.3.7
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5511e24808d5d695-SYD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"386ad9c3-2af7-40ce-a50c-5cd70f7a2d34","identifier":null,"session_count":1,"language":"en","timezone":null,"game_version":null,"device_os":null,"device_type":1,"device_model":null,"ad_id":null,"tags":{},"last_active":1578357664,"playtime":0,"amount_spent":0.0,"created_at":1578357664,"invalid_identifier":true,"badge_count":0,"sdk":null,"test_type":null,"ip":"210.8.247.26","external_user_id":null}'
+    http_version: 
+  recorded_at: Tue, 07 Jan 2020 00:41:04 GMT
+recorded_with: VCR 4.0.0

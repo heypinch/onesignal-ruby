@@ -19,6 +19,10 @@ describe 'Live API Testing', remote: true do
                      included_segments: ['Test Users'])
   end
 
+  let(:player) do
+    Player.new(device_type: 1)
+  end
+
   it 'sends a notification' do
     VCR.use_cassette('os-send-noti') do
       response = OneSignal.send_notification notification
@@ -33,6 +37,13 @@ describe 'Live API Testing', remote: true do
       response = OneSignal.fetch_notification @notification_id
       expect(response).to be_instance_of OneSignal::Responses::Notification
       expect(response.id).to eq @notification_id
+    end
+  end
+
+  it 'creates a new player' do
+    VCR.use_cassette('os-create-player') do
+      response = OneSignal.create_player player
+      expect(response).to be_instance_of OneSignal::Responses::Player
     end
   end
 

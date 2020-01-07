@@ -27,6 +27,10 @@ module OneSignal
       get "notifications/#{notification_id}"
     end
 
+    def create_player player
+      post 'players', player
+    end
+
     def fetch_players
       get 'players'
     end
