@@ -6,7 +6,7 @@ describe OneSignal::Responses::Player do
   let(:json) do
     <<~JSON
         {
-            "id": "1",
+            "id": "fb1b9d4c-17c5-4f58-8f4f-f2d82a9d7076",
             "identifier": "7abcd558f29d0b1f048083e2834ad8ea4b3d87d8ad9c088b33c132706ff445f0",
             "session_count": 1,
             "language": "en",
