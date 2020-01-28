@@ -95,4 +95,8 @@ describe OneSignal::Responses::Notification do
   it 'creates an object from an hash' do
     expect(described_class.from_json(JSON.parse(json))).to be_instance_of described_class
   end
+
+  it 'exposes attributes' do
+    expect(described_class.from_json(json)).to respond_to(:attributes)
+  end
 end
