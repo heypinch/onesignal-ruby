@@ -8,7 +8,6 @@ module OneSignal
       :external_user_id
 
     def initialize **params
-      puts params.inspect
       unless params.include?(:device_type)
         raise ArgumentError, 'missing device_type'
       end
