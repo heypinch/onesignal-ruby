@@ -14,6 +14,7 @@ module OneSignal
         @ios_badgeCount               = params[:ios_badgeCount]
         @collapse_id                  = params[:collapse_id]
         @apns_alert                   = params[:apns_alert]
+        @web_push_topic               = params[:web_push_topic]
       end
 
       def as_json options = nil
@@ -27,6 +28,7 @@ module OneSignal
           'ios_badgeCount'                  => ios_badgeCount,
           'collapse_id'                     => collapse_id,
           'apns_alert'                      => apns_alert,
+          'web_push_topic'                  => web_push_topic,
         }
       end
     end
