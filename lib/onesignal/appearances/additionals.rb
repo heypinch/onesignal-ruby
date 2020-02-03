@@ -2,7 +2,7 @@ module OneSignal
   module Appearances
     class Additionals
       attr_reader :android_channel_id, :existing_android_channel_id, :android_led_color, :android_accent_color,
-                  :android_visibility, :ios_badgeType, :ios_badgeCount, :collapse_id, :apns_alert
+                  :android_visibility, :ios_badgeType, :ios_badgeCount, :collapse_id, :apns_alert, :web_push_topic
 
       def initialize params
         @android_channel_id           = params[:android_channel_id]
