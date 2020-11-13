@@ -34,6 +34,7 @@ describe Notification do
             included_segments: segments,
             excluded_segments: segments,
             send_after: time,
+            ttl: 60,
             filters: filters,
             appearance_sounds: sounds,
             included_targets: targets
@@ -44,6 +45,7 @@ describe Notification do
         'contents' => contents.as_json,
         'headings' => headings.as_json,
         'send_after' => time.to_s,
+        'ttl' => 60,
         'included_segments' => segments.as_json,
         'excluded_segments' => segments.as_json,
         'data' => subject.attachments.data.as_json,

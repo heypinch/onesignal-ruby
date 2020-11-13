@@ -6,7 +6,7 @@ require 'onesignal/notification/headings'
 module OneSignal
   class Notification
     attr_reader :contents, :headings, :template_id, :included_segments, :excluded_segments,
-                :included_targets, :send_after, :attachments, :appearance_sounds, :appearance_images,
+                :included_targets, :send_after, :ttl, :attachments, :appearance_sounds, :appearance_images,
                 :appearance_additionals, :buttons
 
     def initialize **params
@@ -21,6 +21,7 @@ module OneSignal
       @excluded_segments      = params[:excluded_segments]
       @included_targets       = params[:included_targets]
       @send_after             = params[:send_after].to_s
+      @ttl                    = params[:ttl]
       @attachments            = params[:attachments]
       @filters                = params[:filters]
       @appearance_sounds      = params[:appearance_sounds]
